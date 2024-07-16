@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Set YARN_IGNORE_NODE
+        run: echo "YARN_IGNORE_NODE=1" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: yarn install
 
