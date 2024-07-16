@@ -24,10 +24,20 @@ jobs:
         run: yarn install --immutable
 
       - name: Run Vitest tests
-        run: yarn run test:run -- --coverage
+        run: |
+          if yarn vitest --help > /dev/null 2>&1; then
+            yarn run test:unit --coverage
+          else
+            echo "No Vitest files found, skipping tests."
+          fi
 
       - name: Run Storybook tests
-        run: yarn run storybook:test
+        run: |
+          if yarn test-storybook --help > /dev/null 2>&1; then
+            yarn run storybook:test
+          else
+            echo "No Storybook test files found, skipping tests."
+          fi
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2

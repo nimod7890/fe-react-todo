@@ -13,7 +13,7 @@
     "build-storybook": "storybook build",
     "storybook:test:": "test-storybook",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:unit": "vitest run"
   },
   "dependencies": {
     "jsdom": "^24.1.0",
