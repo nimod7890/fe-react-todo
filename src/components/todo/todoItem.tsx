@@ -14,8 +14,8 @@ function TodoItem({ todoItem, todoItemIndex }: TodoItemProps) {
   const [text, setText] = useState<string>(title);
   useEffect(() => setText(todoItem.title), [todoItem]);
 
-  const [disabled, setDisabled] = useState<boolean>(true);
-  const longPressRef = useLongPress(() => setDisabled(false));
+  const [isEditable, setIsEditable] = useState<boolean>(false);
+  const longPressRef = useLongPress(() => setIsEditable(true));
 
   const { removeTodo, updateTodo } = useTodo();
 
@@ -23,21 +23,21 @@ function TodoItem({ todoItem, todoItemIndex }: TodoItemProps) {
   const handleUpdate = () => {
     // TODO: index로 처리 시 error. 로직 수정 필요
     updateTodo({ index: todoItemIndex, title: text });
-    setDisabled(true);
+    setIsEditable(true);
   };
 
   return (
     <div className="bg-green-200 flex" ref={longPressRef}>
       <input
-        disabled={disabled}
+        disabled={!isEditable}
         value={text}
         onChange={({ target: { value } }) => setText(value)}
       />
       {registerDate.toISOString()}
-      {disabled ? (
-        <ActionButton label="삭제" onClick={handleRemove} />
-      ) : (
+      {isEditable ? (
         <ActionButton label="수정" onClick={handleUpdate} />
+      ) : (
+        <ActionButton label="삭제" onClick={handleRemove} />
       )}
     </div>
   );
