@@ -8,7 +8,6 @@ import {
   requestAddHistoryProps,
   requestRemoveHistoryProps,
   requestAddRecentTodoProps,
-  requestRemoveLastRecentTodoProps,
   requestUpdateTodoProps,
 } from 'src/store/types/todoTypes';
 
@@ -30,8 +29,7 @@ function TodoContextProvider({ children }: PropsWithChildren) {
   const requestAddRecentTodo = (payload: requestAddRecentTodoProps) =>
     dispatch({ type: TODO_ACTION.ADD_RECENT_TODO, payload });
 
-  const requestRemoveLastRecentTodo = (payload: requestRemoveLastRecentTodoProps) =>
-    dispatch({ type: TODO_ACTION.REMOVE_LAST_RECENT_TODO, payload });
+  const requestRemoveLastRecentTodo = () => dispatch({ type: TODO_ACTION.REMOVE_LAST_RECENT_TODO });
 
   const requestUpdateTodo = (payload: requestUpdateTodoProps) =>
     dispatch({ type: TODO_ACTION.UPDATE_TODO, payload });

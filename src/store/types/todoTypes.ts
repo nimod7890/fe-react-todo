@@ -47,8 +47,6 @@ export interface requestAddRecentTodoProps {
   title: string;
 }
 
-export interface requestRemoveLastRecentTodoProps {}
-
 export interface requestUpdateTodoProps {
   index: number;
   title: string;
@@ -61,6 +59,6 @@ export type TodoAction =
   | { type: TODO_ACTION.ADD_HISTORY; payload: requestAddHistoryProps }
   | { type: TODO_ACTION.REMOVE_HISTORY; payload: requestRemoveHistoryProps }
   | { type: TODO_ACTION.ADD_RECENT_TODO; payload: requestAddRecentTodoProps }
-  | { type: TODO_ACTION.REMOVE_LAST_RECENT_TODO; payload: requestRemoveLastRecentTodoProps };
+  | { type: TODO_ACTION.REMOVE_LAST_RECENT_TODO; payload?: never };
 
 export type UserDispatch = Dispatch<TodoAction>;

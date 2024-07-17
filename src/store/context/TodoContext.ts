@@ -7,7 +7,6 @@ import {
   requestAddHistoryProps,
   requestRemoveHistoryProps,
   requestAddRecentTodoProps,
-  requestRemoveLastRecentTodoProps,
 } from 'src/store/types/todoTypes';
 
 const initialTodo = {
@@ -35,7 +34,7 @@ interface ContextType {
   requestAddHistory: (payload: requestAddHistoryProps) => void;
   requestRemoveHistory: (payload: requestRemoveHistoryProps) => void;
   requestAddRecentTodo: (payload: requestAddRecentTodoProps) => void;
-  requestRemoveLastRecentTodo: (payload: requestRemoveLastRecentTodoProps) => void;
+  requestRemoveLastRecentTodo: () => void;
 }
 
 const TodoContext = createContext<ContextType>(initContext);

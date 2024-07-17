@@ -13,10 +13,10 @@ const useTodo = () => {
   } = useTodoContext();
 
   const addTodo = (title: string) => {
-    if (title.length !== 0) {
+    if (title.trim().length !== 0) {
       requestAddTodo({ title });
       if (todo.recentTodoList.length === 5) {
-        requestRemoveLastRecentTodo({});
+        requestRemoveLastRecentTodo();
       }
       requestAddRecentTodo({ title });
       requestAddHistory({ title, status: '등록' });
