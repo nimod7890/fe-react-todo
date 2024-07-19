@@ -7,7 +7,7 @@ interface ActionButtonProps {
 
 export default function ActionButton({ label, onClick }: ActionButtonProps) {
   return (
-    <Button onClick={onClick} variant={`${label}` === '삭제' ? 'default' : 'outline'}>
+    <Button data-testid="action-btn" onClick={onClick} variant={`${label}` === '삭제' ? 'default' : 'outline'}>
       {label}
     </Button>
   );
